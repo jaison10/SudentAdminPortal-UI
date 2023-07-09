@@ -1,0 +1,11 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  /* .button-student{
+    margin-left: 1em;
+  } */
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
