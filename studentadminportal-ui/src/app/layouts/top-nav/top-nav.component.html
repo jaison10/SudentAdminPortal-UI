@@ -3,13 +3,12 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div class="example-button-container">
-      <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-          <a routerLink="/">
+      <a routerLink="/">
           <!-- <a [routerLink]="['/ha']"> -->
+        <button mat-fab color="warn" aria-label="Example icon button with a home icon">
           <mat-icon>home</mat-icon>
-        </a>
         </button>
-      
+      </a>      
     </div>
     <button  [routerLink]="['/ha']" mat-raised-button color="basic" class="button-student">Students</button>
     <span class="example-spacer"></span>
