@@ -51,6 +51,8 @@ import { TopNavComponent } from './layouts/top-nav/top-nav.component';
 import { StudentsComponent } from './students/students.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +98,8 @@ import { AppRoutingModule } from './app-routing.module';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule 
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
