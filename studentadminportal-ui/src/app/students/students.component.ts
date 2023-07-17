@@ -14,7 +14,7 @@ export class StudentsComponent implements OnInit {
   this.StudentsServc.getAllStudents()
   .subscribe(
     (success)=>{
-      console.log(success);
+      console.log(success[0].firstname);
     },
     (error)=>{
       console.log(error);
