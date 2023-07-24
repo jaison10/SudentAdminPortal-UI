@@ -10,7 +10,6 @@ import { Student } from '../models/student.model';
   providedIn: 'root'
 })
 export class StudentsService {
-
   private httpURL = "https://localhost:7100"
   constructor(private httpClient: HttpClient) { } //declaring httpclient variable of type HttpClient - this is for routing
 
