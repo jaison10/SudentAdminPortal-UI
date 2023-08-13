@@ -2,7 +2,7 @@
   <section class="section_header">
     <h1>STUDENTS</h1>
   </section>
-<div class="table">
+<section class="section_table">
 <table mat-table [dataSource]="students">
 
     <!-- Position Column -->
@@ -44,5 +44,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>
+</section>
 </div>
