@@ -7,17 +7,13 @@
     box-shadow: 0 0.4rem .8rem #0005;
     border-radius: .8rem;
     margin-top: 10px;
-    /* max-height: 100%; */
-    /* overflow-x: auto;
-    overflow-y: auto; */
-    /* overflow: hidden; */
 }
 
 .section_table{
-    width: 100%;
-    background-color: antiquewhite;
+    width: 90%;
     overflow: scroll;
     max-height: 33rem;
+    margin: auto;
 }
 
 .section_table::-webkit-scrollbar{
@@ -27,21 +23,31 @@
 
 .section_table::-webkit-scrollbar-thumb{
     border-radius: 0.5rem;
-    background-color: #154;
+    background-color: rgb(60, 64, 63);
+    visibility: hidden;
+}
+
+.section_table:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
 }
 
 table{
-    width: 90%;
+    width: 100%;
     margin: auto;
     overflow: hidden;
 }
 
-.section_table tbody tr:nth-child(even){
+/* .section_table td:nth-child(even){
     background-color: black;
-}
+} */
+
+/* .section_table thead th{
+    position: sticky;
+} */
 
 .section_hader{
     width: 90%;
+    background-color: #000;
     margin: auto;
     padding: .8rem .1rem;
 }
