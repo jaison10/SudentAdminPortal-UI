@@ -7,16 +7,17 @@
     box-shadow: 0 0.4rem .8rem #0005;
     border-radius: .8rem;
     margin-top: 10px;
-    max-height: 90%;
+    /* max-height: 100%; */
     /* overflow-x: auto;
     overflow-y: auto; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .section_table{
-    width: 90%;
-    overflow: auto auto;
-    margin: auto auto;
+    width: 100%;
+    background-color: antiquewhite;
+    overflow: scroll;
+    max-height: 33rem;
 }
 
 .section_table::-webkit-scrollbar{
@@ -26,15 +27,20 @@
 
 .section_table::-webkit-scrollbar-thumb{
     border-radius: 0.5rem;
-    background-color: aqua;
+    background-color: #154;
 }
 
 table{
-    width: 100%;
+    width: 90%;
     margin: auto;
+    overflow: hidden;
 }
 
-.section_header{
+.section_table tbody tr:nth-child(even){
+    background-color: black;
+}
+
+.section_hader{
     width: 90%;
     margin: auto;
     padding: .8rem .1rem;
@@ -43,4 +49,11 @@ table{
 .section_header h1{
     margin: 0;
     padding: 0;
+}
+
+.paginator{
+    width: 90%;
+    margin: auto;
+    border-radius: .8rem;
+    padding-bottom: 10px;
 }
