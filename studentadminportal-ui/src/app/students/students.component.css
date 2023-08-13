@@ -8,18 +8,29 @@
     border-radius: .8rem;
     margin-top: 10px;
     max-height: 90%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    /* overflow-x: auto;
+    overflow-y: auto; */
+    overflow: hidden;
 }
 
 .section_table{
-    width: 100%;
-    overflow: auto;
+    width: 90%;
+    overflow: auto auto;
     margin: auto auto;
 }
 
+.section_table::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.section_table::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: aqua;
+}
+
 table{
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
