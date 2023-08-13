@@ -12,6 +12,7 @@ export class StudentsComponent implements OnInit {
 
   //private allStudents:any[] = [];
   students = new MatTableDataSource<Student>();
+  displayedColumns: string[] = ['fname', 'lname', 'dob', 'mobile', 'gender', 'address'];
 
   constructor(private StudentsServc: StudentsService) { }
 
