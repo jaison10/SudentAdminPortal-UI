@@ -20,6 +20,8 @@ export class StudentsComponent implements OnInit {
     this.StudentsServc.getAllStudents()
     .subscribe(
       (students)=>{
+        console.log(students);
+        
         this.students = new MatTableDataSource<Student>(students);
       },
       (error)=>{
