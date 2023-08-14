@@ -3,35 +3,35 @@
     <h1>STUDENTS</h1>
   </section>
 <section class="section_table">
-<table mat-table [dataSource]="students">
+<table mat-table matSort [dataSource]="students">
 
     <!-- Position Column -->
     <ng-container matColumnDef="fname">
-      <th mat-header-cell *matHeaderCellDef>  First Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  First Name </th>
       <td mat-cell *matCellDef="let student"> {{student.firstname}} </td>
     </ng-container>
 
      <!-- Position Column -->
      <ng-container matColumnDef="lname">
-        <th mat-header-cell *matHeaderCellDef>  Last Name </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Last Name </th>
         <td mat-cell *matCellDef="let student"> {{student.lastname}} </td>
       </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="dob">
-      <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Of Birth </th>
       <td mat-cell *matCellDef="let student"> {{student.dob | date:'dd/MM/YYYY'}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="mobile">
-      <th mat-header-cell *matHeaderCellDef> Mobile </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
       <td mat-cell *matCellDef="let student"> {{student.mobile}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef> Gender </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
       <td mat-cell *matCellDef="let student"> {{student.gender.description}} </td>
     </ng-container>
 
