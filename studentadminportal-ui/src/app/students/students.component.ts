@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { StudentsService } from './students.service';
 import { Student } from '../models/student.model';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatPaginator } from '@angular/material/paginator';
+import {MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import {MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
