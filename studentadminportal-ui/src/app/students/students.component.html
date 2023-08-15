@@ -4,7 +4,7 @@
       <h1>STUDENTS</h1>
     </div>
     <div class="textbox-outer">
-      <input type="text">
+      <input type="text" [(ngModel)]="filterString" (keyup)="filterSudent()">
       <span>search string</span>
     </div>
   </section>

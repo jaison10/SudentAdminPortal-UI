@@ -17,6 +17,7 @@ export class StudentsComponent implements OnInit {
   displayedColumns: string[] = ['fname', 'lname', 'dob', 'mobile', 'gender', 'address'];
   @ViewChild( MatPaginator) matPaginator! : MatPaginator
   @ViewChild( MatSort) matSort! : MatSort
+  filterString ='';
 
   constructor(private StudentsServc: StudentsService) { }
 
@@ -38,6 +39,10 @@ export class StudentsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  filterSudent(){
+    this.students.filter = this.filterString.trim().toLowerCase();
   }
 
 }
