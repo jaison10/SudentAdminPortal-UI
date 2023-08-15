@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Poppins:wght@200;300;400;500&display=swap');
 
 .tableouter{
     background-color: #fff5;
@@ -7,6 +8,7 @@
     box-shadow: 0 0.4rem .8rem #0005;
     border-radius: .8rem;
     margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .section_table{
@@ -48,6 +50,7 @@ table{
 .section_header h1{
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header-input{
@@ -56,24 +59,58 @@ table{
     justify-content: space-between; /*space-between makes items have a gap and if there are 2 items - one will be on left & the other on right*/
     width: 90%;
     margin: auto;
-    background-color: #f13;
+    background-color: #fff;
+    padding-top: 5px;
 }
 
 .textbox-outer{
-    padding: 10px;
+    padding: 10px 0 10px 0;
+    position: relative;
+    width: 200px;
 }
 
 .textbox-outer input{
+    width: 95%;
     height: 30px;
-    background-color: #1d2b3a;
-    border: 1px solid #fff;
+    background-color: #fff;
+    border: 1px solid #171616;
     border-radius: 5px;
     outline: none;
     font-size: 1em;
+    color: #0f0f0f;
+    transition: 0.5s;
+
 }
 
 .textbox-outer span{
+    padding: 7px;
+    pointer-events: none;
     position: absolute;
+    left: 0;
+    color: #0e0d0d;
+    font-size: 1em;
+    transition: 0.5s;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.textbox-outer input:focus ~span{
+    color: #0cbac0;
+    background-color: #fff;
+
+    /* color:#fff;
+    background-color: #0cbac0; */
+
+    transform: translateX(10px) translateY(-9px);
+    font-size: 0.7em;
+    padding: 0px 0px;
+    /* border-left: 1px solid #0cbac0;
+    border-right: 1px solid #0cbac0; */
+    letter-spacing: 0.1em;
+}
+
+.textbox-outer input:focus{
+    border: 1px solid #0cbac0;
 }
 
 .paginator{
