@@ -45,16 +45,35 @@ table{
     position: sticky;
 } */
 
-.section_hader{
-    width: 90%;
-    background-color: #000;
-    margin: auto;
-    padding: .8rem .1rem;
-}
-
 .section_header h1{
     margin: 0;
     padding: 0;
+}
+
+.header-input{
+    display: flex; /*items in a row.*/
+    align-items: center; /*In the middle from top and bottom*/
+    justify-content: space-between; /*space-between makes items have a gap and if there are 2 items - one will be on left & the other on right*/
+    width: 90%;
+    margin: auto;
+    background-color: #f13;
+}
+
+.textbox-outer{
+    padding: 10px;
+}
+
+.textbox-outer input{
+    height: 30px;
+    background-color: #1d2b3a;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1em;
+}
+
+.textbox-outer span{
+    position: absolute;
 }
 
 .paginator{
