@@ -22,7 +22,7 @@ export class StudentViewComponent implements OnInit {
 
     if(this.studentIdFrmURL){
       console.log("The given ID is: ", this.studentIdFrmURL);
-      
+      //if some value is given in route, the below function in Services will be called passing ID.
       this.StudentService.getStudentDet(this.studentIdFrmURL).subscribe((student : Student)=>{
         console.log(student);
       },

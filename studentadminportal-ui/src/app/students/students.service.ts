@@ -16,6 +16,7 @@ export class StudentsService {
   getAllStudents():Observable<Student[]>{ //returns an Observable of type of Student inteface-which is a Model.
     return this.httpClient.get<Student[]>(this.httpURL + "/Student")
   }
+  //if "students/someid" is given in the frontend, the below url in the backend will be called which accepts a GUID.
   getStudentDet(studentId : string):Observable<Student>{
     return this.httpClient.get<Student>(this.httpURL+"/Student/" + studentId)
   }

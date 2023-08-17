@@ -14,7 +14,7 @@ const routes: Routes = [
     component : StudentsComponent
   },
   {
-    path:'students/:Id',
+    path:'students/:Id',  //if some id is passed along with "students" route, StudentViewComponent will be called.
     component : StudentViewComponent
   }
 ]
