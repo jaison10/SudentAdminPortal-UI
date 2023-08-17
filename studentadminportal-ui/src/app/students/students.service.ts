@@ -16,4 +16,7 @@ export class StudentsService {
   getAllStudents():Observable<Student[]>{ //returns an Observable of type of Student inteface-which is a Model.
     return this.httpClient.get<Student[]>(this.httpURL + "/Student")
   }
+  getStudentDet(studentId : string):Observable<Student>{
+    return this.httpClient.get<Student>(this.httpURL+"/Student/" + studentId)
+  }
 }
