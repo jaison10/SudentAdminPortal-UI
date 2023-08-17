@@ -53,12 +53,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { StudentViewComponent } from './students/student-view/student-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
-    StudentsComponent
+    StudentsComponent,
+    StudentViewComponent
   ],
   imports: [
     FormsModule,
