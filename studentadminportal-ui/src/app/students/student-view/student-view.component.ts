@@ -16,9 +16,9 @@ export class StudentViewComponent implements OnInit {
 
   ngOnInit(): void {
     //this is for reading value from the URL - params
-    this.routes.paramMap.subscribe((params)=>{
-      this.studentIdFrmURL = params.get("Id"); //this "Id" shud be same as the one given in app.routing for the route provided.
-    })
+    // this.routes.paramMap.subscribe((params)=>{
+    //   this.studentIdFrmURL = params.get("Id"); //this "Id" shud be same as the one given in app.routing for the route provided.
+    // })
 
     if(this.studentIdFrmURL){
       console.log("The given ID is: ", this.studentIdFrmURL);
