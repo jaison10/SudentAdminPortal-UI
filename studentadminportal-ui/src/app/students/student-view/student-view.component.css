@@ -116,19 +116,18 @@
   .form-section{
     width: 90%;
     height: 90%;
-    background-color: #997171;
     margin: auto;
   }
 
 .form{
   padding-top: 40px;
   width: 70%;
+  background-color: #997171;
   margin: auto;
   /* backdrop-filter: blur(7px);
   box-shadow: 0 0.4rem .8rem #0005;
   border-radius: .8rem; */
 }
-
 
   .form-rows{
     display: flex;
@@ -137,8 +136,12 @@
 
   .form-columns{
     display: flex;
+    justify-content: space-between;
+  }
+
+  .form-columns mat-form-field{
     width: 100%;
-    /* justify-content: space-between; */
+    padding-left: 10px;
   }
 
   .full-len-field{
