@@ -7,27 +7,29 @@
         <form class="form">
             <div class="form-rows">
                 <div class="form-columns">
-                    <mat-form-field>
+                    <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
                         <input type="text" matInput>
                     </mat-form-field>
-                    <mat-form-field>
+                    <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
                         <input type="text" matInput>
                     </mat-form-field>
                 </div>
                 <div class="form-columns">
-                    <mat-form-field class="full-len-field">
+                    <mat-form-field class="full-len-field" appearance="outline">
                         <mat-label>Email</mat-label>
                         <input type="text" matInput>
+                        <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required> -->
+                        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                     </mat-form-field>
                 </div>
                 <div class="form-columns">
-                    <mat-form-field>
+                    <mat-form-field appearance="outline">
                         <mat-label>Phone</mat-label>
                         <input type="text" matInput>
                     </mat-form-field>
-                    <mat-form-field>
+                    <mat-form-field appearance="outline">
                         <mat-label>Gender</mat-label>
                         <mat-select>
                             <mat-option value="one">Male</mat-option>
@@ -36,10 +38,13 @@
                     </mat-form-field>
                 </div>
                 <div class="form-columns">
-                    <mat-form-field class="full-len-field">
+                    <mat-form-field class="full-len-field" appearance="outline">
                         <mat-label>Address</mat-label>
                         <textarea matInput></textarea>
                     </mat-form-field>
+                </div>
+                <div class="form-columns">
+                    <button class="save-button" role="button">Save Changes</button>
                 </div>
             </div>
         </form>

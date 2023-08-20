@@ -2,15 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { Student } from 'src/app/models/student.model';
 import { ActivatedRoute } from '@angular/router';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-student-view',
   templateUrl: './student-view.component.html',
-  styleUrls: ['./student-view.component.css']
+  styleUrls: [
+    './student-view.component.css'
+  ],
+  // imports: [MatFormFieldModule, MatInputModule]
 })
 export class StudentViewComponent implements OnInit {
 
   private studentIdFrmURL : string | null | undefined
+  email = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute) {  }
 
@@ -31,6 +38,13 @@ export class StudentViewComponent implements OnInit {
         console.log("Error Occured: ", error);
       })
     }
+  }
+  
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
 }
