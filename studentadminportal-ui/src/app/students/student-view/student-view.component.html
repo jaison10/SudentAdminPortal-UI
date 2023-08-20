@@ -1,20 +1,47 @@
 <div class="outergroup">
-    <section class="header-button">
+    <div class="header-button">
         <span class="section_header"> Details</span>
         <button class="return-button" role="button">Go Back</button>
-    </section>
-    <section class="form-section">
-        <form>
+    </div>
+    <div class="form-section">
+        <form class="form">
             <div class="form-rows">
                 <div class="form-columns">
-                    <h1>hello</h1>
-                    <h1>World</h1>
+                    <mat-form-field>
+                        <mat-label>First Name</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>First Name</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
                 </div>
                 <div class="form-columns">
-                    <h1>Second Hello</h1>
-                    <h1>World</h1>
+                    <mat-form-field class="full-len-field">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="form-columns">
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input type="text" matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Gender</mat-label>
+                        <mat-select>
+                            <mat-option value="one">Male</mat-option>
+                            <mat-option value="two">Female</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-columns">
+                    <mat-form-field class="full-len-field">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput></textarea>
+                    </mat-form-field>
                 </div>
             </div>
         </form>
-    </section>
+    </div>
 </div>

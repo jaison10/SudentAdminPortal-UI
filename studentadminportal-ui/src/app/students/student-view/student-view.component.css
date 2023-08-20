@@ -120,6 +120,16 @@
     margin: auto;
   }
 
+.form{
+  padding-top: 40px;
+  width: 70%;
+  margin: auto;
+  /* backdrop-filter: blur(7px);
+  box-shadow: 0 0.4rem .8rem #0005;
+  border-radius: .8rem; */
+}
+
+
   .form-rows{
     display: flex;
     flex-direction: column;
@@ -127,4 +137,9 @@
 
   .form-columns{
     display: flex;
+    justify-content: space-between;
+  }
+
+  .full-len-field{
+    width: 100%;
   }
