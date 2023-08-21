@@ -38,10 +38,10 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>{{student.gender.description}}</mat-label>
-                        <mat-select [(ngModel)]="student.gender.description" name="gender">
-                            <mat-option value="male">Male</mat-option>
-                            <mat-option value="female">Female</mat-option>
-                            <mat-option value="other">Other</mat-option>
+                          <mat-select>
+                            <mat-option *ngFor="let gender of genders" [value]="gender.description" >
+                                {{ gender.description }}
+                            </mat-option>
                           </mat-select>
                     </mat-form-field>
                 </div>

@@ -39,7 +39,7 @@ export class StudentViewComponent implements OnInit {
     'profileImgUrl':'',
   };
   studentFName : String | undefined;
-  genders : String[] | null;
+  genders : Gender[] | null = [];
 
   constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute) {  }
 
@@ -64,8 +64,10 @@ export class StudentViewComponent implements OnInit {
       })
     }
 
-    this.StudentService.GetAllGenders().subscribe((genderData: Gender[])=>{
+    this.StudentService.GetAllGenders().subscribe((genderData)=>{
       this.genders = genderData
+      console.log(genderData);
+      
     },
     (error : any)=>{
         console.log("Error Occured: ", error);

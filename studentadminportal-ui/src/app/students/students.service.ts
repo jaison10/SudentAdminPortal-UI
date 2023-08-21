@@ -22,6 +22,6 @@ export class StudentsService {
     return this.httpClient.get<Student>(this.httpURL+"/Student/" + studentId)
   }
   GetAllGenders():Observable<Gender[]>{
-    return this.httpClient.get<Gender>(this.httpURL+"/Student/")
+    return this.httpClient.get<Gender[]>(this.httpURL+"/Gender/")
   }
 }
