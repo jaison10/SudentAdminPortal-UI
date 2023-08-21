@@ -1,7 +1,7 @@
 <div class="outergroup">
     <div class="header-button">
         <span class="section_header">{{studentFName}} Details</span>
-        <button class="return-button" role="button">Go Back</button>
+        <button class="return-button" role="button" [routerLink]="['/students']">Go Back</button>
     </div>
     <div class="form-section">
         <form class="form">
@@ -37,10 +37,11 @@
                         <input type="text" matInput [(ngModel)]="student.mobile" name="mobile">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
-                        <mat-label>Gender</mat-label>
-                        <mat-select>
-                            <mat-option value="one">Male</mat-option>
-                            <mat-option value="two">Female</mat-option>
+                        <mat-label>{{student.gender.description}}</mat-label>
+                        <mat-select [(ngModel)]="student.gender.description" name="gender">
+                            <mat-option value="male">Male</mat-option>
+                            <mat-option value="female">Female</mat-option>
+                            <mat-option value="other">Other</mat-option>
                           </mat-select>
                     </mat-form-field>
                 </div>
