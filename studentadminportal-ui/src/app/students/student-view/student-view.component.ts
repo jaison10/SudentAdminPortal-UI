@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormControl, Validators } from '@angular/forms';
+import { Gender } from 'src/app/models/gender.model';
 
 @Component({
   selector: 'app-student-view',
@@ -18,8 +19,7 @@ export class StudentViewComponent implements OnInit {
 
   private studentIdFrmURL : string | null | undefined
   email = new FormControl('', [Validators.required, Validators.email]);
-  student : Student = { 
-    //defining empty object initially which will be overwritten once the data is fetched from backend - otherwise throws error while loading the page initial as the value wont be assigned.
+  student : Student = { //defining empty object initially which will be overwritten once the data is fetched from backend - otherwise throws error while loading the page initial as the value wont be assigned.
     'id':'',
     'firstname':'',
     'lastname':'',
@@ -39,6 +39,7 @@ export class StudentViewComponent implements OnInit {
     'profileImgUrl':'',
   };
   studentFName : String | undefined;
+  genders : String[] | null;
 
   constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute) {  }
 
@@ -62,6 +63,13 @@ export class StudentViewComponent implements OnInit {
         console.log("Error Occured: ", error);
       })
     }
+
+    this.StudentService.GetAllGenders().subscribe((genderData: Gender[])=>{
+      this.genders = genderData
+    },
+    (error : any)=>{
+        console.log("Error Occured: ", error);
+    })
   }
   
   getErrorMessage() {

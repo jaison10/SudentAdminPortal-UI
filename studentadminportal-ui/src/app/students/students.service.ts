@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
+import { Gender } from '../models/gender.model';
 
 //getting data from the backend and providing to the frontend is done using Services.
 //Service wont be created in the beginning when component is generated-hence it can be created using "ng g s <name>"
@@ -19,5 +20,8 @@ export class StudentsService {
   //if "students/someid" is given in the frontend, the below url in the backend will be called which accepts a GUID.
   getStudentDet(studentId : string):Observable<Student>{
     return this.httpClient.get<Student>(this.httpURL+"/Student/" + studentId)
+  }
+  GetAllGenders():Observable<Gender[]>{
+    return this.httpClient.get<Gender>(this.httpURL+"/Student/")
   }
 }
