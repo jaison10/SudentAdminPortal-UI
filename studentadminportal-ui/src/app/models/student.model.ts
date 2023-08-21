@@ -1,4 +1,4 @@
-import { Address } from "cluster";
+import { Address } from "./address.model";
 import { Gender } from "./gender.model";
 
 export interface Student{
@@ -7,6 +7,7 @@ export interface Student{
     firstname : String,
     lastname: String,
     mobile: number,
+    email:String,
     profileImgUrl :String,
     genderID: string,
     gender: Gender,

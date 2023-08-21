@@ -18,8 +18,27 @@ export class StudentViewComponent implements OnInit {
 
   private studentIdFrmURL : string | null | undefined
   email = new FormControl('', [Validators.required, Validators.email]);
-  student : Student | undefined;
-  studentFName : String | undefined 
+  student : Student = { 
+    //defining empty object initially which will be overwritten once the data is fetched from backend - otherwise throws error while loading the page initial as the value wont be assigned.
+    'id':'',
+    'firstname':'',
+    'lastname':'',
+    'dob':'',
+    'mobile':0,
+    'gender':{
+      'id':'',
+      'description':''
+    },
+    'address':{
+      'id':'',
+      'physicalAddress':'',
+      'postalAddress':''
+    },
+    'genderID':'',
+    'email':'',
+    'profileImgUrl':'',
+  };
+  studentFName : String | undefined;
 
   constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute) {  }
 
@@ -34,11 +53,9 @@ export class StudentViewComponent implements OnInit {
       //if some value is given in route, the below function in Services will be called passing ID.
       this.StudentService.getStudentDet(this.studentIdFrmURL).subscribe((studentData : Student)=>{
         console.log("Data from DB" , studentData);
-        this.student = studentData
+        this.student = studentData;
         console.log("Saved Data", this.student);
-        this.studentFName = this.student?.firstname
-        console.log("Student FName", this.studentFName);
-      
+        this.studentFName = this.student?.firstname;      
       },
       (error)=>{ 
         //the backend is expecting a GUID. If the given value isnt a GUID or if the given val is GUID and curresponding student isnt found, both cases will return an error.
