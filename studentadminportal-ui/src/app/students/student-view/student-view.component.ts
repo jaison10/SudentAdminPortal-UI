@@ -76,7 +76,16 @@ export class StudentViewComponent implements OnInit {
   
   UpdateStudent() : void{
     console.log(this.student);
-    
+    if(this.studentIdFrmURL){
+      this.StudentService.UpdateStudentDetails(this.studentIdFrmURL, this.student).subscribe((studentData : Student)=>{
+        this.student = studentData;
+        this.studentFName = this.student?.firstname;      
+      },
+      (error)=>{ 
+        //the backend is expecting a GUID. If the given value isnt a GUID or if the given val is GUID and curresponding student isnt found, both cases will return an error.
+        console.log("Error Occured: ", error);
+      })
+    }
   }
 
   getErrorMessage() {

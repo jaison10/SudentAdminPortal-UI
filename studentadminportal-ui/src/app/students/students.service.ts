@@ -36,6 +36,8 @@ export class StudentsService {
       physicalAddress: incomingData.address.physicalAddress,
       postalAddress: incomingData.address.postalAddress 
     }
-    return this.httpClient.put(this.httpURL+ "/Student/" + studentId, requestData)
+    console.log("CHANGED DATA", requestData);
+    
+    return this.httpClient.put<Student>(this.httpURL+ "/Student/" + studentId, requestData)
   }
 }
