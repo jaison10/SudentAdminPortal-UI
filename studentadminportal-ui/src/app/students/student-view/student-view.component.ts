@@ -74,6 +74,11 @@ export class StudentViewComponent implements OnInit {
     })
   }
   
+  UpdateStudent() : void{
+    console.log(this.student);
+    
+  }
+
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';

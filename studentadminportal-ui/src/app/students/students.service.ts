@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
 import { Gender } from '../models/gender.model';
+import { UpdateRequestDetails } from '../models/update-request.model';
 
 //getting data from the backend and providing to the frontend is done using Services.
 //Service wont be created in the beginning when component is generated-hence it can be created using "ng g s <name>"
@@ -23,5 +24,18 @@ export class StudentsService {
   }
   GetAllGenders():Observable<Gender[]>{
     return this.httpClient.get<Gender[]>(this.httpURL+"/Gender/")
+  }
+  UpdateStudentDetails(studentId : string, incomingData : Student):Observable<Student>{
+    var requestData : UpdateRequestDetails = {
+      dob: incomingData.dob,
+      firstname : incomingData.firstname,
+      lastname: incomingData.lastname,
+      mobile: incomingData.mobile,
+      email:incomingData.email,
+      genderID: incomingData.genderID,
+      physicalAddress: incomingData.address.physicalAddress,
+      postalAddress: incomingData.address.postalAddress 
+    }
+    return this.httpClient.put(this.httpURL+ "/Student/" + studentId, requestData)
   }
 }
