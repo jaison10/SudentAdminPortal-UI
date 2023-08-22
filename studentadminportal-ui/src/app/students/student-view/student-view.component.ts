@@ -6,6 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormControl, Validators } from '@angular/forms';
 import { Gender } from 'src/app/models/gender.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-student-view',
@@ -41,7 +42,7 @@ export class StudentViewComponent implements OnInit {
   studentFName : String | undefined;
   genders : Gender[] | null = [];
 
-  constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute) {  }
+  constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute, private snackbar : MatSnackBar) {  }
 
   ngOnInit(): void {
     //this is for reading value from the URL - params
@@ -66,8 +67,6 @@ export class StudentViewComponent implements OnInit {
 
     this.StudentService.GetAllGenders().subscribe((genderData)=>{
       this.genders = genderData
-      console.log(genderData);
-      
     },
     (error : any)=>{
         console.log("Error Occured: ", error);
@@ -76,16 +75,17 @@ export class StudentViewComponent implements OnInit {
   
   UpdateStudent() : void{
     console.log(this.student);
-    if(this.studentIdFrmURL){
-      this.StudentService.UpdateStudentDetails(this.studentIdFrmURL, this.student).subscribe((studentData : Student)=>{
-        this.student = studentData;
-        this.studentFName = this.student?.firstname;      
+    //here "this.student" can be passed directly as it is 2 way binding -whatever edited in the window will already be saved in this student var
+      this.StudentService.UpdateStudentDetails(this.student.id, this.student).subscribe((studentData : Student)=>{
+        this.studentFName = this.student?.firstname;  //studentFName is a fixed var hence need to reassign.
+        this.snackbar.open("Student Details Updated!", undefined, {
+          duration: 3000
+        });
       },
       (error)=>{ 
         //the backend is expecting a GUID. If the given value isnt a GUID or if the given val is GUID and curresponding student isnt found, both cases will return an error.
         console.log("Error Occured: ", error);
       })
-    }
   }
 
   getErrorMessage() {

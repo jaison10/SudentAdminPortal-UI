@@ -25,7 +25,7 @@ export class StudentsService {
   GetAllGenders():Observable<Gender[]>{
     return this.httpClient.get<Gender[]>(this.httpURL+"/Gender/")
   }
-  UpdateStudentDetails(studentId : string, incomingData : Student):Observable<Student>{
+  UpdateStudentDetails(studentId : String, incomingData : Student):Observable<Student>{
     var requestData : UpdateRequestDetails = {
       dob: incomingData.dob,
       firstname : incomingData.firstname,
