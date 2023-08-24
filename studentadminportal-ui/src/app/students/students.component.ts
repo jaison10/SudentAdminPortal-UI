@@ -44,8 +44,11 @@ export class StudentsComponent implements OnInit {
   filterSudent(){
     this.students.filter = this.filterString.trim().toLowerCase();
   }
-  DeleteStudent(){
+
+  DeleteStudent(id: String){
+    console.log("The ID is: ", id);
     
+    this.StudentsServc.DeleteStudent(id);
   }
 
 }

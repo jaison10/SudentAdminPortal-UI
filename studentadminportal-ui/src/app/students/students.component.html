@@ -56,7 +56,7 @@
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
       <td mat-cell *matCellDef="let student">
-        <a (click)="DeleteStudent()">  
+        <a [routerLink]="[]" (click)="DeleteStudent(student.id)">  
           <!--define the route needs to be executed on clicking. First one in array is the route name and second is the ID after the route name-->
           <mat-icon color="primary">delete</mat-icon>  
         </a>
