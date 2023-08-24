@@ -40,7 +40,7 @@ export class StudentsService {
     
     return this.httpClient.put<Student>(this.httpURL+ "/Student/" + studentId, requestData)
   }
-  DeleteStudent(studentId: String):Observable<Number>{
-    return this.httpClient.delete<Number>(this.httpURL+ "/Student/" + studentId); 
+  DeleteStudent(studentId: String):Observable<Student>{
+    return this.httpClient.delete<Student>(this.httpURL+ "/Student/" + studentId); 
   }
 }
