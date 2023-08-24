@@ -4,6 +4,7 @@ import { Student } from '../models/student.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import {MatSort, MatSortModule } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-students',
@@ -18,8 +19,9 @@ export class StudentsComponent implements OnInit {
   @ViewChild( MatPaginator) matPaginator! : MatPaginator
   @ViewChild( MatSort) matSort! : MatSort
   filterString ='';
+  DeleteResponsdeMsg : string = ""
 
-  constructor(private StudentsServc: StudentsService) { }
+  constructor(private StudentsServc: StudentsService, private readonly snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.StudentsServc.getAllStudents()
@@ -48,7 +50,24 @@ export class StudentsComponent implements OnInit {
   DeleteStudent(id: String){
     console.log("The ID is: ", id);
     
-    this.StudentsServc.DeleteStudent(id);
+    this.StudentsServc.DeleteStudent(id).subscribe((deletedNum)=>{
+      console.log("Number of rows deleted: ", deletedNum); 
+
+      if(deletedNum == -1){
+        this.DeleteResponsdeMsg = "Couldn't Delete Student Details."
+      }
+      else{
+        this.DeleteResponsdeMsg = "Student Details Deleted Successfully!"
+      }   
+    },(error)=>{
+      console.log("DELETION FAILED.");
+      this.DeleteResponsdeMsg = "Couldn't Delete Student Details."
+    });
+    console.log("MESSAGE: ", this.DeleteResponsdeMsg);
+    
+    this.snackbar.open(this.DeleteResponsdeMsg, undefined, {
+      duration: 3000
+    });  
   }
 
 }
