@@ -14,7 +14,7 @@ export class StudentsComponent implements OnInit {
 
   //private allStudents:any[] = [];
   students:MatTableDataSource<Student> = new MatTableDataSource<Student>();
-  displayedColumns: string[] = ['fname', 'lname', 'dob', 'mobile', 'gender', 'edit'];
+  displayedColumns: string[] = ['fname', 'lname', 'dob', 'mobile', 'gender', 'edit', 'delete'];
   @ViewChild( MatPaginator) matPaginator! : MatPaginator
   @ViewChild( MatSort) matSort! : MatSort
   filterString ='';
@@ -43,6 +43,9 @@ export class StudentsComponent implements OnInit {
 
   filterSudent(){
     this.students.filter = this.filterString.trim().toLowerCase();
+  }
+  DeleteStudent(){
+    
   }
 
 }
