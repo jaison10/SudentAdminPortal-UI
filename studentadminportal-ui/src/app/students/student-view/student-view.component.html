@@ -57,7 +57,10 @@
                         <textarea matInput [(ngModel)]="student.address.postalAddress" name="postalAddress"></textarea>
                     </mat-form-field>
                 </div>
-                <div class="form-columns">
+                <div class="form-columns" *ngIf="!existingUser">
+                    <button class="save-button" role="button" (click)="CreateStudent()">Add Details</button>
+                </div>
+                <div class="form-columns" *ngIf="existingUser">
                     <button class="save-button" role="button" (click)="UpdateStudent()">Save Changes</button>
                 </div>
             </div>

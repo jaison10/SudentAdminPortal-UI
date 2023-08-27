@@ -43,4 +43,17 @@ export class StudentsService {
   DeleteStudent(studentId: String):Observable<Student>{
     return this.httpClient.delete<Student>(this.httpURL+ "/Student/" + studentId); 
   }
+  CreateStudent(incomingData :Student):Observable<Student>{
+    var requestData : UpdateRequestDetails = {
+      dob: incomingData.dob,
+      firstname : incomingData.firstname,
+      lastname: incomingData.lastname,
+      mobile: incomingData.mobile,
+      email:incomingData.email,
+      genderID: incomingData.genderID,
+      physicalAddress: incomingData.address.physicalAddress,
+      postalAddress: incomingData.address.postalAddress 
+    }
+    return this.httpClient.post<Student>(this.httpURL + "/Student", requestData);
+  }
 }

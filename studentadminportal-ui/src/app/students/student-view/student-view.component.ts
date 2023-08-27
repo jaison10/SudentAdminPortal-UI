@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { Student } from 'src/app/models/student.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormControl, Validators } from '@angular/forms';
 import { Gender } from 'src/app/models/gender.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { error } from 'console';
 
 @Component({
   selector: 'app-student-view',
@@ -41,14 +42,21 @@ export class StudentViewComponent implements OnInit {
   };
   studentFName : String | undefined;
   genders : Gender[] | null = [];
+  existingUser : Boolean = false;
 
-  constructor(private StudentService : StudentsService, private readonly routes : ActivatedRoute, private snackbar : MatSnackBar) {  }
+  constructor(
+    private StudentService : StudentsService, 
+    private readonly routes : ActivatedRoute, private snackbar : MatSnackBar, 
+    private router:Router) {  }
 
   ngOnInit(): void {
     //this is for reading value from the URL - params
     this.routes.paramMap.subscribe((params)=>{  
-      if(params.get("Id")?.toLowerCase()!='createStudent'.toLowerCase()){
+      if(params.get("Id")?.toLowerCase()!='createStudent'.toLowerCase()){        
         this.studentIdFrmURL = params.get("Id"); //this "Id" shud be same as the one given in app.routing for the route provided.
+        console.log("LOADED AGAIN and the ID is", this.studentIdFrmURL);
+
+        this.existingUser = true;
       }else{
         this.studentFName = 'Insert';
       } 
@@ -56,6 +64,8 @@ export class StudentViewComponent implements OnInit {
     
     if(this.studentIdFrmURL){
       //if some value is given in route, the below function in Services will be called passing ID.
+      console.log("GOING TO FETCH DATA", this.studentIdFrmURL);
+      
       this.StudentService.getStudentDet(this.studentIdFrmURL).subscribe((studentData : Student)=>{
         console.log("Data from DB" , studentData);
         this.student = studentData;
@@ -80,7 +90,7 @@ export class StudentViewComponent implements OnInit {
     console.log(this.student);
     //here "this.student" can be passed directly as it is 2 way binding -whatever edited in the window will already be saved in this student var
       this.StudentService.UpdateStudentDetails(this.student.id, this.student).subscribe((studentData : Student)=>{
-        this.studentFName = this.student?.firstname;  //studentFName is a fixed var hence need to reassign.
+        this.studentFName = studentData?.firstname;  //studentFName is a fixed var hence need to reassign.
         this.snackbar.open("Student Details Updated!", undefined, {
           duration: 3000
         });
@@ -89,6 +99,19 @@ export class StudentViewComponent implements OnInit {
         //the backend is expecting a GUID. If the given value isnt a GUID or if the given val is GUID and curresponding student isnt found, both cases will return an error.
         console.log("Error Occured: ", error);
       })
+  }
+
+  CreateStudent(): void{
+    console.log(this.student);
+    this.StudentService.CreateStudent(this.student).subscribe((studentData: Student)=>{
+      this.studentFName = studentData.firstname;
+      this.router.navigateByUrl("/students/" + studentData.id);
+      this.snackbar.open("Created New Student Successfully!", undefined, {
+        duration: 3000
+      });
+    },(error)=>{
+      console.log("Error Occured: ", error);
+    })
   }
 
   getErrorMessage() {
