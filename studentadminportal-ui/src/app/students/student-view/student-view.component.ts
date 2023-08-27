@@ -87,7 +87,8 @@ export class StudentViewComponent implements OnInit {
   }
   
   UpdateStudent() : void{
-    console.log(this.student);
+    console.log("Going to update student", this.student);
+    console.log("ID being decided to update from 'UpdateStudent' function", this.student.id);
     //here "this.student" can be passed directly as it is 2 way binding -whatever edited in the window will already be saved in this student var
       this.StudentService.UpdateStudentDetails(this.student.id, this.student).subscribe((studentData : Student)=>{
         this.studentFName = studentData?.firstname;  //studentFName is a fixed var hence need to reassign.
@@ -104,7 +105,8 @@ export class StudentViewComponent implements OnInit {
   CreateStudent(): void{
     console.log(this.student);
     this.StudentService.CreateStudent(this.student).subscribe((studentData: Student)=>{
-      this.studentFName = studentData.firstname;
+      // this.studentFName = studentData.firstname;
+      this.student = studentData;
       this.router.navigateByUrl("/students/" + studentData.id);
       this.snackbar.open("Created New Student Successfully!", undefined, {
         duration: 3000
