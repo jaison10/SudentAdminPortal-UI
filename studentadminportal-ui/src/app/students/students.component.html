@@ -3,10 +3,15 @@
     <div class="section_header">
       <h1>STUDENTS</h1>
     </div>
-    <div class="textbox-outer">
-      <input type="text" [(ngModel)]="filterString" (keyup)="filterSudent()">
-      <span>search string</span>
-    </div>
+    <div class="newbutton-textbox">
+      <div class="addnew-button">
+          <button [routerLink]="['/students/createStudent']" mat-raised-button color="basic" class="">Add</button>
+      </div>
+      <div class="textbox-outer">
+        <input type="text" [(ngModel)]="filterString" (keyup)="filterSudent()">
+        <span>search string</span>
+      </div>
+  </div>
   </section>
 <section class="section_table">
 <table mat-table matSort [dataSource]="students">

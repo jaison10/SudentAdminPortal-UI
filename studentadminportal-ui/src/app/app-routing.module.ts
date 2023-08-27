@@ -7,7 +7,8 @@ import { StudentViewComponent } from './students/student-view/student-view.compo
 const routes: Routes = [
   {
     path:'',
-    component : StudentsComponent
+    redirectTo: '/students',
+    pathMatch : 'full'
   },
   {
     path:'students',
@@ -15,6 +16,11 @@ const routes: Routes = [
   },
   {
     path:'students/:Id',  //if some id is passed along with "students" route, StudentViewComponent will be called.
+    component : StudentViewComponent
+  }
+  ,
+  {
+    path:'students/createStudent',
     component : StudentViewComponent
   }
 ]

@@ -64,6 +64,16 @@ table{
     padding-top: 5px;
 }
 
+.newbutton-textbox{
+    display: flex;
+    width: auto;
+}
+
+.addnew-button{
+    padding-top: 10px;
+    padding-right: 5px ;
+}
+
 .textbox-outer{
     padding: 10px 0 10px 0;
     position: relative;

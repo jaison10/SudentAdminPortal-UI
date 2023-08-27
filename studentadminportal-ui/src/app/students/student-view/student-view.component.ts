@@ -46,12 +46,15 @@ export class StudentViewComponent implements OnInit {
 
   ngOnInit(): void {
     //this is for reading value from the URL - params
-    this.routes.paramMap.subscribe((params)=>{
-      this.studentIdFrmURL = params.get("Id"); //this "Id" shud be same as the one given in app.routing for the route provided.
+    this.routes.paramMap.subscribe((params)=>{  
+      if(params.get("Id")?.toLowerCase()!='createStudent'.toLowerCase()){
+        this.studentIdFrmURL = params.get("Id"); //this "Id" shud be same as the one given in app.routing for the route provided.
+      }else{
+        this.studentFName = 'Insert';
+      } 
     })
-
+    
     if(this.studentIdFrmURL){
-      console.log("The given ID is: ", this.studentIdFrmURL);
       //if some value is given in route, the below function in Services will be called passing ID.
       this.StudentService.getStudentDet(this.studentIdFrmURL).subscribe((studentData : Student)=>{
         console.log("Data from DB" , studentData);
