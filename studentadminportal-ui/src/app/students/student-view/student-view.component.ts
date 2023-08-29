@@ -43,6 +43,7 @@ export class StudentViewComponent implements OnInit {
   studentFName : String | undefined;
   genders : Gender[] | null = [];
   existingUser : Boolean = false;
+  profileImageUrl : String = '';
 
   constructor(
     private StudentService : StudentsService, 
@@ -57,6 +58,7 @@ export class StudentViewComponent implements OnInit {
         console.log("LOADED AGAIN and the ID is", this.studentIdFrmURL);
 
         this.existingUser = true;
+        this.SetProfileImage();
       }else{
         this.studentFName = 'Insert';
       } 
@@ -121,6 +123,17 @@ export class StudentViewComponent implements OnInit {
       return 'You must enter a value';
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  private SetProfileImage():void{
+    console.log("The profile URL : ", this.student.profileImgUrl);
+    
+    if(this.student.profileImgUrl){
+
+    }else
+    {
+      this.profileImageUrl = "../../../assets/Images/dummy-avatar.png"
+    }
   }
 
 }

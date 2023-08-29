@@ -3,67 +3,72 @@
         <span class="section_header">{{studentFName}} Details</span>
         <button class="return-button" role="button" [routerLink]="['/students']">Go Back</button>
     </div>
-    <div class="form-section">
-        <form class="form">
-            <div class="form-rows">
-                <div class="form-columns">
-                    <mat-form-field appearance="outline">
-                        <mat-label>First Name</mat-label>
-                        <input type="text" matInput [(ngModel)]="student.firstname" name="firstname">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>First Name</mat-label>
-                        <input type="text" matInput [(ngModel)]="student.lastname" name="lastname">
-                    </mat-form-field>
+    <div class="profile-details">
+        <div class="profile-pic">
+            <img [src]="profileImageUrl">
+        </div>
+        <div class="form-section">
+            <form class="form">
+                <div class="form-rows">
+                    <div class="form-columns">
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input type="text" matInput [(ngModel)]="student.firstname" name="firstname">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input type="text" matInput [(ngModel)]="student.lastname" name="lastname">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-columns">
+                        <mat-form-field class="" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input type="text" matInput [(ngModel)]="student.email" name="email">
+                            <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required> -->
+                            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" [(ngModel)]="student.dob" name="dob">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                    </div>
+                    <div class="form-columns">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phone</mat-label>
+                            <input type="text" matInput [(ngModel)]="student.mobile" name="mobile">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Gender</mat-label>
+                              <mat-select [(ngModel)]="student.genderID" name="gender">
+                                <mat-option *ngFor="let gender of genders" [value]="gender.id" >
+                                    {{ gender.description }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-columns">
+                        <mat-form-field class="full-len-field" appearance="outline">
+                            <mat-label>Physical Address</mat-label>
+                            <textarea matInput [(ngModel)]="student.address.physicalAddress" name="physicalAddress"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-columns">
+                        <mat-form-field class="full-len-field" appearance="outline">
+                            <mat-label>Postal Address</mat-label>
+                            <textarea matInput [(ngModel)]="student.address.postalAddress" name="postalAddress"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-columns" *ngIf="!existingUser">
+                        <button class="save-button" role="button" (click)="CreateStudent()">Add Details</button>
+                    </div>
+                    <div class="form-columns" *ngIf="existingUser">
+                        <button class="save-button" role="button" (click)="UpdateStudent()">Save Changes</button>
+                    </div>
                 </div>
-                <div class="form-columns">
-                    <mat-form-field class="" appearance="outline">
-                        <mat-label>Email</mat-label>
-                        <input type="text" matInput [(ngModel)]="student.email" name="email">
-                        <!-- <input matInput placeholder="pat@example.com" [formControl]="email" required> -->
-                        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="picker" [(ngModel)]="student.dob" name="dob">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                </div>
-                <div class="form-columns">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Phone</mat-label>
-                        <input type="text" matInput [(ngModel)]="student.mobile" name="mobile">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Gender</mat-label>
-                          <mat-select [(ngModel)]="student.genderID" name="gender">
-                            <mat-option *ngFor="let gender of genders" [value]="gender.id" >
-                                {{ gender.description }}
-                            </mat-option>
-                          </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="form-columns">
-                    <mat-form-field class="full-len-field" appearance="outline">
-                        <mat-label>Physical Address</mat-label>
-                        <textarea matInput [(ngModel)]="student.address.physicalAddress" name="physicalAddress"></textarea>
-                    </mat-form-field>
-                </div>
-                <div class="form-columns">
-                    <mat-form-field class="full-len-field" appearance="outline">
-                        <mat-label>Postal Address</mat-label>
-                        <textarea matInput [(ngModel)]="student.address.postalAddress" name="postalAddress"></textarea>
-                    </mat-form-field>
-                </div>
-                <div class="form-columns" *ngIf="!existingUser">
-                    <button class="save-button" role="button" (click)="CreateStudent()">Add Details</button>
-                </div>
-                <div class="form-columns" *ngIf="existingUser">
-                    <button class="save-button" role="button" (click)="UpdateStudent()">Save Changes</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

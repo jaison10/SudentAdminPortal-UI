@@ -31,6 +31,31 @@
     font-size: 20px;
 }
 
+.profile-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.profile-pic{
+  width: 30%;
+  height: 50%;
+}
+
+.profile-pic img{
+  /* width: 250px;
+  height: 250px; */
+  /* width: 60%;
+  height: 40%; */
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid #3e3e36;
+  filter: drop-shadow(0 0 8px #0db0e6);
+}
+
 /* BUTTON DESIGN */
 
 .return-button {
@@ -119,7 +144,7 @@
 .form{
   padding-top: 40px;
   padding-right: 10px;
-  width: 70%;
+  width: 90%;
   background-color: #997171;
   margin: auto;
   /* backdrop-filter: blur(7px);
