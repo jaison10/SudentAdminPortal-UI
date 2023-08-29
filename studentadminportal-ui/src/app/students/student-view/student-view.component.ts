@@ -105,9 +105,8 @@ export class StudentViewComponent implements OnInit {
   CreateStudent(): void{
     console.log(this.student);
     this.StudentService.CreateStudent(this.student).subscribe((studentData: Student)=>{
-      // this.studentFName = studentData.firstname;
       this.student = studentData;
-      this.router.navigateByUrl("/students/" + studentData.id);
+      this.router.navigateByUrl(`/students/${studentData.id}`);
       this.snackbar.open("Created New Student Successfully!", undefined, {
         duration: 3000
       });
