@@ -41,8 +41,28 @@
 }
 
 .profile-pic{
-  width: 30%;
-  height: 50%;
+  width: 20%;
+  height: 40%;
+  position: relative;
+}
+
+.edit-profile{
+  position: absolute;
+  z-index: 1;
+  top: 80%;
+  background-color: #111827;
+  border-radius: 10%;
+  color: #D1D5DB;
+}
+
+.edit-profile input{
+  display: none;
+}
+
+.edit-profile input + label {
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .profile-pic img{

@@ -5,7 +5,11 @@
     </div>
     <div class="profile-details">
         <div class="profile-pic">
-            <img [src]="profileImageUrl">
+            <div class="edit-profile">
+                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                <label for="imageUpload">Edit</label>
+            </div>
+            <img [src]="profileImageUrl">   
         </div>
         <div class="form-section">
             <form class="form">
