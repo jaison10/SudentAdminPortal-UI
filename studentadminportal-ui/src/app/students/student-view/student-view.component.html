@@ -6,8 +6,8 @@
     <div class="profile-details">
         <div class="profile-pic">
             <div class="edit-profile">
-                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                <label for="imageUpload">Edit</label>
+                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="UploadImage($event)" />
+                <label for="imageUpload">Edit Picture</label>
             </div>
             <img [src]="profileImageUrl">   
         </div>

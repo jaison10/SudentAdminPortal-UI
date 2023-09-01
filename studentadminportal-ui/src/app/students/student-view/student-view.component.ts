@@ -58,7 +58,7 @@ export class StudentViewComponent implements OnInit {
         console.log("LOADED AGAIN and the ID is", this.studentIdFrmURL);
 
         this.existingUser = true;
-        this.SetProfileImage();
+       
       }else{
         this.studentFName = 'Insert';
       } 
@@ -73,10 +73,12 @@ export class StudentViewComponent implements OnInit {
         this.student = studentData;
         console.log("Saved Data", this.student);
         this.studentFName = this.student?.firstname;      
+        this.SetProfileImage();
       },
       (error)=>{ 
         //the backend is expecting a GUID. If the given value isnt a GUID or if the given val is GUID and curresponding student isnt found, both cases will return an error.
         console.log("Error Occured: ", error);
+        this.SetProfileImage();
       })
     }
 
@@ -118,6 +120,18 @@ export class StudentViewComponent implements OnInit {
     })
   }
 
+  UploadImage(event :any) : void{
+    if(this.student.id){
+      var file : File = event.target.files[0];
+      this.StudentService.UploadImage(this.student.id, file).subscribe((fileName)=>{
+        console.log("file name ", fileName);
+        
+      });
+      console.log("UPLOAD COMPLETED");
+      
+    }
+  }
+
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -129,7 +143,7 @@ export class StudentViewComponent implements OnInit {
     console.log("The profile URL : ", this.student.profileImgUrl);
     
     if(this.student.profileImgUrl){
-
+      this.profileImageUrl = this.student.profileImgUrl
     }else
     {
       this.profileImageUrl = "../../../assets/Images/dummy-avatar.png"

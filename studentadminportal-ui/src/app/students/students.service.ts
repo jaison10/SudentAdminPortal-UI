@@ -19,7 +19,7 @@ export class StudentsService {
     return this.httpClient.get<Student[]>(this.httpURL + "/Student")
   }
   //if "students/someid" is given in the frontend, the below url in the backend will be called which accepts a GUID.
-  getStudentDet(studentId : string):Observable<Student>{
+  getStudentDet(studentId : string):Observable<Student>{    
     return this.httpClient.get<Student>(this.httpURL+"/Student/" + studentId)
   }
   GetAllGenders():Observable<Gender[]>{
@@ -58,4 +58,11 @@ export class StudentsService {
     }
     return this.httpClient.post<Student>(this.httpURL + "/Student", requestData);
   }
+  
+  UploadImage(studentId: String, file: File){
+    console.log("The student id ", studentId);
+    
+    return this.httpClient.post<String>(this.httpURL + "/Student/" + studentId + "/upload-profile", file)
+    }
 }
+

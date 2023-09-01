@@ -59,7 +59,7 @@
   display: none;
 }
 
-.edit-profile input + label {
+.edit-profile input + label{
   display: inline-block;
   padding: 5px;
   cursor: pointer;
@@ -73,7 +73,7 @@
   width: 100%;
   border-radius: 50%;
   border: 2px solid #3e3e36;
-  filter: drop-shadow(0 0 8px #0db0e6);
+  filter: drop-shadow(0 0 8px #222323);
 }
 
 /* BUTTON DESIGN */
