@@ -8,6 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Gender } from 'src/app/models/gender.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { error } from 'console';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-view',
@@ -80,6 +81,8 @@ export class StudentViewComponent implements OnInit {
         console.log("Error Occured: ", error);
         this.SetProfileImage();
       })
+    }else{
+      this.SetProfileImage();
     }
 
     this.StudentService.GetAllGenders().subscribe((genderData)=>{
@@ -123,17 +126,15 @@ export class StudentViewComponent implements OnInit {
   UploadImage(event :any) : void{
     if(this.student.id){
       var file : File = event.target.files[0];
-      console.log("THE FILE:", file);
-      
-      this.StudentService.UploadImage(this.student.id, file).subscribe((studentData: Student)=>{
-        console.log("Student Data ", studentData);
-        
+      this.StudentService.UploadImage(this.student.id, file).subscribe((studentData: any)=>{
+        this.student.profileImgUrl = studentData.profileImgUrl;
+        this.SetProfileImage();
+        this.snackbar.open("Profile Picture Updated Successfully!", undefined, {
+          duration: 3000
+        });
       }, (error)=>{
         console.log("Error occured on uploading file : ", error);
-        
       });
-      console.log("UPLOAD COMPLETED");
-      
     }
   }
 
@@ -148,7 +149,7 @@ export class StudentViewComponent implements OnInit {
     console.log("The profile URL : ", this.student.profileImgUrl);
     
     if(this.student.profileImgUrl){
-      this.profileImageUrl = this.student.profileImgUrl
+      this.profileImageUrl = this.StudentService.GetImagePath(this.student.profileImgUrl);
     }else
     {
       this.profileImageUrl = "../../../assets/Images/dummy-avatar.png"
