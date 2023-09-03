@@ -59,10 +59,16 @@ export class StudentsService {
     return this.httpClient.post<Student>(this.httpURL + "/Student", requestData);
   }
   
-  UploadImage(studentId: String, file: File){
+  UploadImage(studentId: String, file: File):Observable<Student>{
     console.log("The student id ", studentId);
     
-    return this.httpClient.post<String>(this.httpURL + "/Student/" + studentId + "/upload-profile", file)
+    const formData = new FormData();
+    formData.append("file", file, file.name);
+
+    return this.httpClient.post<Student>(this.httpURL + "/Student/" + studentId + "/upload-profile", formData, {
+      reportProgress:  true,
+      // headers: { 'content-type': 'multipart/form-data' }
+    });
     }
 }
 

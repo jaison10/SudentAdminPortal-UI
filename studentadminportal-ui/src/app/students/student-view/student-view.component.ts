@@ -123,8 +123,13 @@ export class StudentViewComponent implements OnInit {
   UploadImage(event :any) : void{
     if(this.student.id){
       var file : File = event.target.files[0];
-      this.StudentService.UploadImage(this.student.id, file).subscribe((fileName)=>{
-        console.log("file name ", fileName);
+      console.log("THE FILE:", file);
+      
+      this.StudentService.UploadImage(this.student.id, file).subscribe((studentData: Student)=>{
+        console.log("Student Data ", studentData);
+        
+      }, (error)=>{
+        console.log("Error occured on uploading file : ", error);
         
       });
       console.log("UPLOAD COMPLETED");
