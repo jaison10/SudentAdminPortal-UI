@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
 import { Gender } from '../models/gender.model';
 import { UpdateRequestDetails } from '../models/update-request.model';
+import { environment } from 'src/environments/environment';
 
 //getting data from the backend and providing to the frontend is done using Services.
 //Service wont be created in the beginning when component is generated-hence it can be created using "ng g s <name>"
@@ -12,7 +13,8 @@ import { UpdateRequestDetails } from '../models/update-request.model';
   providedIn: 'root'
 })
 export class StudentsService {
-  private httpURL = "https://localhost:7100"
+  private httpURL = environment.httpURL;
+  
   constructor(private httpClient: HttpClient) { } //declaring httpclient variable of type HttpClient - this is for routing
 
   getAllStudents():Observable<Student[]>{ //returns an Observable of type of Student inteface-which is a Model.
