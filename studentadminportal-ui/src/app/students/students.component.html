@@ -11,10 +11,10 @@
         <input type="text" [(ngModel)]="filterString" (keyup)="filterSudent()">
         <span>search string</span>
       </div>
-  </div>
+    </div>
   </section>
-<section class="section_table">
-<table mat-table matSort [dataSource]="students">
+  <section class="section_table">
+    <table mat-table matSort [dataSource]="students">
 
     <!-- Fname Column -->
     <ng-container matColumnDef="fname">
